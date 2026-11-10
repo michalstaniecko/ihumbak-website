@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 Not Found — iHumbak.website</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d1117'/%3E%3Ctext x='4' y='22' font-family='monospace' font-size='16' font-weight='bold' fill='%233fb950'%3E&gt;_%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --fg: #c9d1d9;
+      --muted: #8b949e;
+      --prompt: #3fb950;
+      --accent: #58a6ff;
+      --error: #f85149;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--bg); color: var(--fg); }
+    body {
+      font: 15px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      padding: 16px;
+      min-height: 100vh;
+    }
+    main { max-width: 80ch; }
+    p { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .block { margin-bottom: 1em; }
+    .ps { color: var(--prompt); }
+    .path { color: var(--accent); }
+    .muted { color: var(--muted); }
+    .error { color: var(--error); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover, a:focus-visible { text-decoration: underline; }
+    .cursor {
+      display: inline-block;
+      width: 0.6em; height: 1.15em;
+      background: var(--fg);
+      vertical-align: text-bottom;
+      animation: blink 1s steps(1) infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
+  </style>
+</head>
+<body>
+<main>
+  <div class="block">
+    <p><span class="ps">michal@ihumbak</span>:<span class="path">~</span>$ cd <span class="req">???</span></p>
+    <p class="error">bash: cd: <span class="req">???</span>: No such file or directory</p>
+    <p class="muted"># 404 Not Found: this page does not exist or has moved.</p>
+  </div>
+
+  <div class="block">
+    <p><span class="ps">michal@ihumbak</span>:<span class="path">~</span>$ <a href="/">cd ~</a></p>
+  </div>
+
+  <p><span class="ps">michal@ihumbak</span>:<span class="path">~</span>$ <span class="cursor" aria-hidden="true"></span></p>
+</main>
+<script>
+  (function () {
+    var path;
+    try { path = decodeURIComponent(location.pathname); } catch (e) { path = location.pathname; }
+    document.querySelectorAll('.req').forEach(function (el) { el.textContent = path; });
+  })();
+</script>
+</body>
+</html>
