@@ -4,14 +4,13 @@ import { execFileSync } from "node:child_process";
 import { mkdtempSync, readFileSync, writeFileSync, existsSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { SITE_DIR, listFiles, normaliseCss, normaliseHtml } from "./site.js";
+import { SITE_DIR, SNAPSHOT_DIR, listFiles, normaliserFor } from "./site.js";
 
-const SNAPSHOT_DIR = new URL("./snapshots/", import.meta.url).pathname;
 const tmp = mkdtempSync(join(tmpdir(), "snapshot-diff-"));
-const files = process.argv.slice(2).length ? process.argv.slice(2) : listFiles(SITE_DIR);
+const files = process.argv.slice(2).length ? process.argv.slice(2) : listFiles(SITE_DIR).filter(normaliserFor);
 
 for (const file of files) {
-  const normalise = file.endsWith(".css") ? normaliseCss : normaliseHtml;
+  const normalise = normaliserFor(file);
   const read = (dir) => (existsSync(join(dir, file)) ? normalise(readFileSync(join(dir, file), "utf8")) + "\n" : "");
   const a = join(tmp, "snapshot"), b = join(tmp, "built");
   writeFileSync(a, read(SNAPSHOT_DIR));

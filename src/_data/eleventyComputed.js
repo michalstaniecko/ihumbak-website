@@ -4,9 +4,5 @@ import { segments } from "../../lib/terminal.js";
 export default {
   app: (data) => data.apps.find((app) => app.slug === segments(data.page.url)[0]),
   project: (data) => data.projects.find((project) => project.slug === segments(data.page.url)[0]),
-  appDocument: (data) => {
-    const [appSlug, documentSlug] = segments(data.page.url);
-    const app = data.apps.find((candidate) => candidate.slug === appSlug);
-    return app?.documents.find((document) => document.slug === documentSlug);
-  },
+  appDocument: (data) => data.app?.documents?.find((document) => document.slug === segments(data.page.url)[1]),
 };

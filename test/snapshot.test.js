@@ -4,13 +4,10 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { mkdirSync, readFileSync, rmSync, writeFileSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { SITE_DIR, listFiles, normaliseCss, normaliseHtml } from "./site.js";
+import { SITE_DIR, SNAPSHOT_DIR, listFiles, normaliserFor } from "./site.js";
 
-const SNAPSHOT_DIR = new URL("./snapshots/", import.meta.url).pathname;
 const update = process.env.UPDATE_SNAPSHOTS === "1";
-const normalisers = { html: normaliseHtml, css: normaliseCss };
-
-const built = listFiles(SITE_DIR).filter((file) => normalisers[file.split(".").pop()]);
+const built = listFiles(SITE_DIR).filter(normaliserFor);
 
 if (update) {
   rmSync(SNAPSHOT_DIR, { recursive: true, force: true });
@@ -29,7 +26,7 @@ for (const file of built) {
   test(`${file} matches its snapshot`, () => {
     const snapshot = join(SNAPSHOT_DIR, file);
     assert.ok(existsSync(snapshot), `no snapshot for ${file}`);
-    const normalise = normalisers[file.split(".").pop()];
+    const normalise = normaliserFor(file);
     assert.equal(
       normalise(readFileSync(join(SITE_DIR, file), "utf8")),
       normalise(readFileSync(snapshot, "utf8")),

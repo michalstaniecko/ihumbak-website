@@ -4,7 +4,8 @@ import { join, relative, sep } from "node:path";
 import { parse } from "node-html-parser";
 
 export const SITE_DIR = new URL("../_site/", import.meta.url).pathname;
-export const ORIGIN = "https://ihumbak.website";
+export const SNAPSHOT_DIR = new URL("./snapshots/", import.meta.url).pathname;
+export const ORIGIN = JSON.parse(readFileSync(new URL("../src/_data/site.json", import.meta.url), "utf8")).origin;
 
 export function listFiles(dir) {
   return readdirSync(dir, { withFileTypes: true, recursive: true })
@@ -66,6 +67,11 @@ function serialise(node, parentTag) {
 
 export function normaliseCss(css) {
   return collapse(css);
+}
+
+// The normaliser for a snapshotted file, or undefined if the file type is not snapshotted.
+export function normaliserFor(file) {
+  return { html: normaliseHtml, css: normaliseCss }[file.split(".").pop()];
 }
 
 function collapse(text) {

@@ -29,6 +29,7 @@ test("every internal link resolves to a built page", () => {
   assert.ok(page("/").doc.querySelector("#portfolio"), "the home page has no #portfolio anchor");
 });
 
+// 404 is served at any missing URL and is noindex, so it has no canonical.
 test("every page except 404 has a canonical link equal to its URL", () => {
   for (const { url, doc } of site) {
     if (url === "/404.html") continue;
