@@ -3,6 +3,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY eleventy.config.js ./
+COPY lib ./lib
 COPY src ./src
 RUN npx eleventy
 
