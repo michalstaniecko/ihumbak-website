@@ -54,8 +54,13 @@
 </head>
 <body>
 <main>
+  <nav class="block" aria-label="Breadcrumb">
+    <p><span class="ps">michal@ihumbak</span>:<span class="path">~/portfolio/cv-drawer</span>$ pwd</p>
+    <p><a href="/">~</a>/<a href="/#portfolio">portfolio</a>/<a href="/cv-drawer/" aria-current="page">cv-drawer</a></p>
+  </nav>
+
   <nav class="block" aria-label="CV Drawer pages">
-    <p><span class="ps">michal@ihumbak</span>:<span class="path"><a href="/">~</a>/portfolio/cv-drawer</span>$ ls</p>
+    <p><span class="ps">michal@ihumbak</span>:<span class="path">~/portfolio/cv-drawer</span>$ ls</p>
     <p><a href="/cv-drawer/" aria-current="page">about</a>  <a href="/cv-drawer/help/">help</a>  <a href="/cv-drawer/privacy/">privacy</a></p>
   </nav>
 
@@ -77,7 +82,7 @@ nothing is sent anywhere.</p>
 
   <div class="block">
     <h2>## Download</h2>
-    <p>github         <a href="https://github.com/michalstaniecko/moje-cv/releases/latest" target="_blank" rel="noopener">github.com/michalstaniecko/moje-cv/releases</a></p>
+    <p>github         <a href="https://github.com/michalstaniecko/moje-cv/releases/latest" target="_blank" rel="noopener">github.com/michalstaniecko/moje-cv/releases <span aria-hidden="true">↗</span></a></p>
   </div>
 
   <div class="block">
@@ -85,6 +90,10 @@ nothing is sent anywhere.</p>
     <p>help           <a href="/cv-drawer/help/">CV Drawer Help</a>
 privacy        <a href="/cv-drawer/privacy/">CV Drawer Privacy Policy</a></p>
   </div>
+
+  <nav class="block" aria-label="Back">
+    <p><span class="ps">michal@ihumbak</span>:<span class="path">~/portfolio/cv-drawer</span>$ <a href="/">cd ~</a>  <span class="muted"># back to home</span></p>
+  </nav>
 
   <p><span class="ps">michal@ihumbak</span>:<span class="path">~/portfolio/cv-drawer</span>$ <span class="cursor" aria-hidden="true"></span></p>
 </main>
