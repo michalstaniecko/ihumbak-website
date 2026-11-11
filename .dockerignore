@@ -6,3 +6,6 @@ compose.yml
 AGENTS.md
 GLOSSARY.md
 docs
+node_modules
+_site
+test

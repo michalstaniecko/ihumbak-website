@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 Not Found — iHumbak.website</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d1117'/%3E%3Ctext x='4' y='22' font-family='monospace' font-size='16' font-weight='bold' fill='%233fb950'%3E&gt;_%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/style.css">
+  <style>
+:root { --error: #f85149; }
+.error { color: var(--error); }
+  </style>
+</head>
+<body>
+<main>
+
+  <div class="block">
+    <p><span class="ps">michal@ihumbak</span>:<span class="path">~</span>$ cd <span class="req">???</span></p>
+    <p class="error">bash: cd: <span class="req">???</span>: No such file or directory</p>
+    <p class="muted"># 404 Not Found: this page does not exist or has moved.</p>
+  </div>
+
+  <div class="block">
+    <p><span class="ps">michal@ihumbak</span>:<span class="path">~</span>$ <a href="/">cd ~</a></p>
+  </div>
+
+
+  <p><span class="ps">michal@ihumbak</span>:<span class="path">~</span>$ <span class="cursor" aria-hidden="true"></span></p>
+</main>
+<script>
+(function () {
+  var path;
+  try { path = decodeURIComponent(location.pathname); } catch (e) { path = location.pathname; }
+  document.querySelectorAll('.req').forEach(function (el) { el.textContent = path; });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+{%- set url = page.url -%}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
+  {%- if description %}
+  <meta name="description" content="{{ description }}">
+  {%- endif %}
+  {%- if noindex %}
+  <meta name="robots" content="noindex">
+  {%- endif %}
+  <meta name="theme-color" content="#0d1117">
+  {%- if not noindex %}
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ ogDescription or description }}">
+  <meta property="og:url" content="{{ site.origin }}{{ url }}">
+  <link rel="canonical" href="{{ site.origin }}{{ url }}">
+  {%- endif %}
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d1117'/%3E%3Ctext x='4' y='22' font-family='monospace' font-size='16' font-weight='bold' fill='%233fb950'%3E&gt;_%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/style.css">
+  {%- if styles %}
+  <style>
+{{ styles | safe }}  </style>
+  {%- endif %}
+</head>
+<body>
+<main>
+  {%- set crumbs = url | breadcrumb %}
+  {%- if crumbs.length %}
+  <nav class="block" aria-label="Breadcrumb">
+    <p>{% prompt "pwd" %}</p>
+    <p><a href="/">~</a>/<a href="/#portfolio">portfolio</a>/{% for crumb in crumbs %}<a href="{{ crumb.href }}"{% if crumb.current %} aria-current="page"{% endif %}>{{ crumb.label }}</a>{% if not loop.last %}/{% endif %}{% endfor %}</p>
+  </nav>
+  {%- endif %}
+  {%- if app %}
+
+  <nav class="block" aria-label="{{ app.name }} pages">
+    <p>{% prompt "ls .." if appDocument else "ls" %}</p>
+    <p><a href="/{{ app.slug }}/"{% if not appDocument %} aria-current="page"{% endif %}>about</a>{% for document in app.documents %}  <a href="/{{ app.slug }}/{{ document.slug }}/"{% if document.slug == appDocument.slug %} aria-current="page"{% endif %}>{{ document.slug }}</a>{% endfor %}</p>
+  </nav>
+  {%- endif %}
+  {%- if crumbs.length %}
+
+  <div class="block">
+    <p>{% prompt "cat " + (appDocument.slug + ".md" if appDocument else "README.md") %}</p>
+  </div>
+  {%- endif %}
+
+{{ content | safe }}
+  {%- set back = url | backLinks %}
+  {%- if back.length %}
+
+  <nav class="block" aria-label="Back">
+    {%- for link in back %}
+    <p>{% prompt '<a href="' + link.href + '">' + link.command + '</a>  <span class="muted"># ' + link.comment + '</span>' %}</p>
+    {%- endfor %}
+  </nav>
+  {%- endif %}
+
+  <p>{% prompt '<span class="cursor" aria-hidden="true"></span>' %}</p>
+</main>
+{%- if script %}
+<script>
+{{ script | safe }}</script>
+{%- endif %}
+</body>
+</html>
