@@ -1,5 +1,5 @@
 import { renderAppDocument } from "./lib/markdown.js";
-import { backLinks, breadcrumb, externalLink, prompt } from "./lib/terminal.js";
+import { backLinks, breadcrumb, documentLines, externalLink, portfolioLines, prompt } from "./lib/terminal.js";
 
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/style.css");
@@ -18,6 +18,10 @@ export default function (eleventyConfig) {
   });
   // {% ext "https://example.com/" %} or {% ext "https://example.com/", "label" %}
   eleventyConfig.addShortcode("ext", (href, label) => externalLink(href, label));
+  // {% documents app, 14 %} -> the App's App documents, one per line, labels from column 14.
+  eleventyConfig.addShortcode("documents", (app, width) => documentLines(app, width).join("\n"));
+  // {% portfolio apps, projects %} -> the Portfolio listing on the home page.
+  eleventyConfig.addShortcode("portfolio", (apps, projects) => portfolioLines(apps, projects).join("\n    "));
 
   return {
     dir: { input: "src", output: "_site" },
