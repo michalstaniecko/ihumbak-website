@@ -1,11 +1,13 @@
+import { renderAppDocument } from "./lib/markdown.js";
 import { backLinks, breadcrumb, externalLink, prompt } from "./lib/terminal.js";
 
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/style.css");
-  // App documents not yet converted to Markdown.
-  eleventyConfig.addPassthroughCopy("src/**/*.html");
   eleventyConfig.addGlobalData("layout", "layouts/base.njk");
   eleventyConfig.setTemplateFormats(["njk", "md"]);
+
+  // App documents: Markdown rendered as terminal output, see lib/markdown.js.
+  eleventyConfig.setLibrary("md", { render: renderAppDocument });
 
   eleventyConfig.addFilter("breadcrumb", breadcrumb);
   eleventyConfig.addFilter("backLinks", backLinks);
