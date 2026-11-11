@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV Drawer Help</title>
+  <meta name="description" content="Help for CV Drawer, a free Mac app for creating CVs and exporting them to PDF.">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="canonical" href="https://ihumbak.website/cv-drawer/help/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d1117'/%3E%3Ctext x='4' y='22' font-family='monospace' font-size='16' font-weight='bold' fill='%233fb950'%3E&gt;_%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --fg: #c9d1d9;
+      --muted: #8b949e;
+      --prompt: #3fb950;
+      --accent: #58a6ff;
+      --heading: #d2a8ff;
+      --code: #e3b341;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--bg); color: var(--fg); }
+    body {
+      font: 15px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      padding: 16px;
+      min-height: 100vh;
+    }
+    main { max-width: 80ch; }
+    p { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+    h1, h2, h3 { font: inherit; margin: 0; color: var(--heading); font-weight: bold; }
+    strong { color: #f0f6fc; }
+    code { font: inherit; color: var(--code); }
+    .block { margin-bottom: 1em; }
+    .ps { color: var(--prompt); }
+    .path { color: var(--accent); }
+    .muted { color: var(--muted); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover, a:focus-visible { text-decoration: underline; }
+    a[aria-current="page"] { color: var(--fg); text-decoration: underline; }
+    .cursor {
+      display: inline-block;
+      width: 0.6em; height: 1.15em;
+      background: var(--fg);
+      vertical-align: text-bottom;
+      animation: blink 1s steps(1) infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
+  </style>
+</head>
+<body>
+<main>
+  <nav class="block" aria-label="Breadcrumb">
+    <p><span class="ps">michal@ihumbak</span>:<span class="path">~/portfolio/cv-drawer/help</span>$ pwd</p>
+    <p><a href="/">~</a>/<a href="/#portfolio">portfolio</a>/<a href="/cv-drawer/">cv-drawer</a>/<a href="/cv-drawer/help/" aria-current="page">help</a></p>
+  </nav>
+
+  <nav class="block" aria-label="CV Drawer pages">
+    <p><span class="ps">michal@ihumbak</span>:<span class="path">~/portfolio/cv-drawer/help</span>$ ls ..</p>
+    <p><a href="/cv-drawer/">about</a>  <a href="/cv-drawer/help/" aria-current="page">help</a>  <a href="/cv-drawer/privacy/">privacy</a></p>
+  </nav>
+
+  <div class="block">
+    <p><span class="ps">michal@ihumbak</span>:<span class="path">~/portfolio/cv-drawer/help</span>$ cat help.md</p>
+  </div>
+
+  <div class="block">
+    <h1># CV Drawer Help</h1>
+    <p>CV Drawer is a free Mac app for creating CVs and exporting them to PDF. It works on macOS 13 Ventura or later, on Macs with Apple silicon and with Intel processors.</p>
+  </div>
+
+  <div class="block">
+    <h2>## How do I install CV Drawer?</h2>
+    <p>- <strong>Mac App Store</strong>: install it like any other app from the App Store.
+- <strong>Downloaded from GitHub</strong>: open the downloaded <code>CV-Drawer-&lt;version&gt;.dmg</code> file, drag <strong>CV Drawer</strong> to the <strong>Applications</strong> folder, then close the window and eject the "CV Drawer" disk in Finder (the ⏏ button next to its name).
+
+The first time, open CV Drawer from the Applications folder or from Launchpad. The <code>.dmg</code> version is signed and checked by Apple (notarized), so macOS opens it without warnings; it may only ask whether to open an app downloaded from the internet. Click <strong>Open</strong>.</p>
+  </div>
+
+  <div class="block">
+    <h2>## Where is my data?</h2>
+    <p>Your CVs, the clause library and your settings are saved automatically on this Mac, in the app's folder:
+
+<code>~/Library/Containers/com.michalstaniecko.mojecv/Data/Library/Application Support/Moje CV</code>
+
+The folder keeps the app's earlier name, "Moje CV". The Mac App Store version and the version downloaded from GitHub share this folder, so on one Mac you always see the same CV library. Nothing is sent anywhere: see the <a href="/cv-drawer/privacy/">Privacy Policy</a>.
+
+Removing the app from the Applications folder does <strong>not</strong> delete your data.</p>
+  </div>
+
+  <div class="block">
+    <h2>## I used an older version. Where are my CVs?</h2>
+    <p>The first time you open the new version, macOS moves the CVs from the older version (named "Moje CV" or "CV Press") into the folder above. You don't need to do anything. CV Drawer appears in the Applications folder next to the older app; once CV Drawer shows your CVs, move the older app to the Trash, because it no longer sees them.
+
+If a CV is missing, open the older version, export the CV to a file and import it in CV Drawer, as described below.</p>
+  </div>
+
+  <div class="block">
+    <h2>## How do I move a CV to another Mac or keep a backup?</h2>
+    <p>1. In the CV library, click <strong>Export to file</strong> next to the CV (or open the CV and choose <strong>File → Export JSON…</strong>). Save the <code>.json</code> file somewhere safe, for example on a USB drive or in iCloud Drive.
+2. On the other Mac, open CV Drawer and click <strong>Import from file</strong> in the CV library (or choose <strong>File → Import…</strong>). Pick the <code>.json</code> file.
+
+The file contains the whole CV, including the photo, so treat it like any other document with your personal data.</p>
+  </div>
+
+  <div class="block">
+    <h2>## Can I edit my CV in Word or another editor?</h2>
+    <p>Yes. Open the CV and choose <strong>File → Export to DOCX…</strong> (or click <strong>Export to DOCX</strong> in the editor). You get a <code>.docx</code> file that you can open in Word, Pages, LibreOffice or Google Docs, for example to add something the app's sections don't cover.
+
+The DOCX file uses a <strong>simplified layout</strong> for editing, the same for every template: it keeps the content, the accent colour, the font and the CV language. The PDF matches the preview, so export to PDF when you want the CV to look exactly like in the app.
+
+- The photo goes into the file only if it's a JPEG or PNG image. The photo in the sample CV isn't, so a DOCX of the sample CV has no photo.
+- The DOCX file is a one-way copy: CV Drawer doesn't read it back, so changes you make in the editor stay only in that file.</p>
+  </div>
+
+  <div class="block">
+    <h2>## How do I update the app?</h2>
+    <p>- <strong>Mac App Store</strong>: the App Store delivers updates like for any other app.
+- <strong>Downloaded from GitHub (<code>.dmg</code>)</strong>: CV Drawer tells you when a new version is available, and you can check yourself with <strong>Help → Check for Updates…</strong>. The app never downloads or installs anything by itself. Click <strong>Download</strong>, open the new <code>.dmg</code> file and drag CV Drawer to the Applications folder, choosing <strong>Replace</strong>. Your CVs stay where they are.
+
+All versions are on the <a href="https://github.com/michalstaniecko/moje-cv/releases/latest" target="_blank" rel="noopener">releases page <span aria-hidden="true">↗</span></a>.</p>
+  </div>
+
+  <div class="block">
+    <h2>## Something doesn't work or I have an idea</h2>
+    <p><a href="https://github.com/michalstaniecko/moje-cv/issues/new/choose" target="_blank" rel="noopener">Report a problem or suggest a feature <span aria-hidden="true">↗</span></a> on GitHub (you can also use <strong>Help → Report a Problem…</strong> in the app). Please give the app version from <strong>CV Drawer → About CV Drawer</strong>, for example "1.0.0 (12)", and your macOS version.
+
+Reports on GitHub are public. Please don't attach a CV with your real personal data: if a CV is needed to show the problem, use a sample CV or replace the data with made-up text.</p>
+  </div>
+
+  <div class="block">
+    <h2>## Contact</h2>
+    <p>E-mail: <a href="mailto:michal.staniecko@gmail.com">michal.staniecko@gmail.com</a></p>
+  </div>
+
+  <nav class="block" aria-label="Back">
+    <p><span class="ps">michal@ihumbak</span>:<span class="path">~/portfolio/cv-drawer/help</span>$ <a href="/cv-drawer/">cd ..</a>  <span class="muted"># back to cv-drawer</span></p>
+    <p><span class="ps">michal@ihumbak</span>:<span class="path">~/portfolio/cv-drawer/help</span>$ <a href="/">cd ~</a>  <span class="muted"># back to home</span></p>
+  </nav>
+
+  <p><span class="ps">michal@ihumbak</span>:<span class="path">~/portfolio/cv-drawer/help</span>$ <span class="cursor" aria-hidden="true"></span></p>
+</main>
+</body>
+</html>
