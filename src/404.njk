@@ -1,0 +1,23 @@
+---
+title: "404 Not Found — iHumbak.website"
+permalink: 404.html
+noindex: true
+styles: |
+    :root { --error: #f85149; }
+    .error { color: var(--error); }
+script: |
+    (function () {
+      var path;
+      try { path = decodeURIComponent(location.pathname); } catch (e) { path = location.pathname; }
+      document.querySelectorAll('.req').forEach(function (el) { el.textContent = path; });
+    })();
+---
+  <div class="block">
+    <p>{% prompt 'cd <span class="req">???</span>' %}</p>
+    <p class="error">bash: cd: <span class="req">???</span>: No such file or directory</p>
+    <p class="muted"># 404 Not Found: this page does not exist or has moved.</p>
+  </div>
+
+  <div class="block">
+    <p>{% prompt '<a href="/">cd ~</a>' %}</p>
+  </div>

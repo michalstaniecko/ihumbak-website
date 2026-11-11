@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "water-tracker-hydration",
+    "name": "Water Tracker Hydration",
+    "summary": "daily water intake tracker · iOS & Android",
+    "documents": [
+      { "slug": "privacy", "label": "Privacy Policy" },
+      { "slug": "terms", "label": "Terms of Service" }
+    ]
+  },
+  {
+    "slug": "cv-drawer",
+    "name": "CV Drawer",
+    "summary": "CV editor with PDF & DOCX export · macOS",
+    "documents": [
+      { "slug": "help", "label": "CV Drawer Help" },
+      { "slug": "privacy", "label": "CV Drawer Privacy Policy" }
+    ]
+  }
+]
